@@ -1,0 +1,13 @@
+Compiling [1/11]: MatrixFactorization_Cython_Epoch.pyx... PASS
+Compiling [2/11]: FunkSVD_fastest.pyx... PASS
+Compiling [3/11]: FunkSVD_slow.pyx... PASS
+Compiling [4/11]: isPrime.pyx... PASS
+Compiling [5/11]: isPrime_nochecks.pyx... PASS
+Compiling [6/11]: isPrime_slow.pyx... PASS
+Compiling [7/11]: SLIM_MSE.pyx... PASS
+Compiling [8/11]: SLIM_MSE_fastest.pyx... PASS
+Compiling [9/11]: SLIM_MSE_slow.pyx... PASS
+Compiling [10/11]: Compute_Similarity_Cython.pyx... PASS
+Compiling [11/11]: SLIM_BPR_Cython_Epoch.pyx... PASS
+run_compile_all_cython: Compilation finished. SUCCESS.
+Compilation log can be found here: './result_experiments/run_compile_all_cython.txt'
