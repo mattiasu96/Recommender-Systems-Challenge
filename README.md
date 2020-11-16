@@ -1,1 +1,3 @@
 Repo for challenge
+**TODO:** Implement  p3Alpha recommender with ItemContentBased using the merging Similarity matrix (use Maurizio Hybrid model, it's already there)
+**Useful:** This commit (https://github.com/nicolo-felicioni/recsys-polimi-2019/commit/2e71e99abe58cc8d99f3b5bcb51b05f0b7680f65) gives some useful hints on how to build an hybrid recommender and manage the various classes ecc... 
