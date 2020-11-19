@@ -10,7 +10,6 @@ from Base.Recommender_utils import check_matrix, similarityMatrixTopK
 from Base.BaseSimilarityMatrixRecommender import BaseItemSimilarityMatrixRecommender
 
 
-
 class ItemKNNSimilarityHybridRecommender(BaseItemSimilarityMatrixRecommender):
     """ ItemKNNSimilarityHybridRecommender
     Hybrid of two similarities S = S1*alpha + S2*(1-alpha)
