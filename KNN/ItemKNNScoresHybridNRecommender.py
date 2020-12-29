@@ -17,7 +17,7 @@ class ItemKNNScoresHybridNRecommender(BaseItemSimilarityMatrixRecommender):
 
     """
 
-    RECOMMENDER_NAME = "ItemKNNScoresHybridMultipleRecommender"
+    RECOMMENDER_NAME = "ItemKNNScoresHybridNRecommender"
 
     def __init__(self, URM_train, recommender_array, number_of_recommenders):
         super(ItemKNNScoresHybridNRecommender, self).__init__(URM_train)
