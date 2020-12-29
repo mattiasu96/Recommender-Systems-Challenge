@@ -32,11 +32,11 @@ class ItemKNNScoresHybridNRecommender(BaseItemSimilarityMatrixRecommender):
     def _compute_item_score(self, user_id_array, items_to_compute):
         item_weights = []
         for i in range(self.number_of_recommenders):
-            print('entering cycle')
+            #print('entering cycle')
             item_weights.append(self.recommender_array[i]._compute_item_score(user_id_array))
 
         weighted_matrices = [a * b for a, b in zip(item_weights, self.weight_array)]
-        print(weighted_matrices[0].shape)
+        #print(weighted_matrices[0].shape)
         # item_weights_1 = self.Recommender_1._compute_item_score(user_id_array)
         # item_weights_2 = self.Recommender_2._compute_item_score(user_id_array)
         # item_weights_3 = self.Recommender_3._compute_item_score(user_id_array)
