@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-
 @author: Maurizio Ferrari Dacrema, Massimo Quadrana
 """
 
@@ -37,7 +36,6 @@ class _Metrics_Object(object):
 class MAP(_Metrics_Object):
     """
     Mean Average Precision, defined as the mean of the AveragePrecision over all users
-
     """
 
     def __init__(self):
@@ -75,7 +73,6 @@ def average_precision(is_relevant, pos_items):
 class MRR(_Metrics_Object):
     """
     Mean Reciprocal Rank, defined as the mean of the Reciprocal Rank over all users
-
     """
 
     def __init__(self):
@@ -215,7 +212,6 @@ def dcg(scores):
 class RMSE(_Metrics_Object):
     """
     Root Mean Squared Error
-
     """
 
     def __init__(self, URM_all):
@@ -399,7 +395,6 @@ class Gini_Diversity(_Global_Item_Distribution_Counter):
     """
     Gini diversity index, computed from the Gini Index but with inverted range, such that high values mean higher diversity
     This implementation ignores zero-occurrence items
-
     # From https://github.com/oliviaguest/gini
     # based on bottom eq: http://www.statsdirect.com/help/content/image/stat0206_wmf.gif
     # from: http://www.statsdirect.com/help/default.htm#nonparametric_methods/gini.htm
@@ -445,12 +440,9 @@ class Diversity_Herfindahl(_Global_Item_Distribution_Counter):
     """
     The Herfindahl index is also known as Concentration index, it is used in economy to determine whether the market quotas
     are such that an excessive concentration exists. It is here used as a diversity index, if high means high diversity.
-
     It is known to have a small value range in recommender systems, between 0.9 and 1.0
-
     The Herfindahl index is a function of the square of the probability an item has been recommended to any user, hence
     The Herfindahl index is equivalent to MeanInterList diversity as they measure the same quantity.
-
     # http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.459.8174&rep=rep1&type=pdf
     """
 
@@ -483,16 +475,13 @@ class Shannon_Entropy(_Global_Item_Distribution_Counter):
     """
     Shannon Entropy is a well known metric to measure the amount of information of a certain string of data.
     Here is applied to the global number of times an item has been recommended.
-
     It has a lower bound and can reach values over 12.0 for random recommenders.
     A high entropy means that the distribution is random uniform across all users.
-
     Note that while a random uniform distribution
     (hence all items with SIMILAR number of occurrences)
     will be highly diverse and have high entropy, a perfectly uniform distribution
     (hence all items with EXACTLY IDENTICAL number of occurrences)
     will have 0.0 entropy while being the most diverse possible.
-
     """
 
     def __init__(self, n_items, ignore_items):
@@ -617,12 +606,9 @@ import scipy.sparse as sps
 class Novelty(_Metrics_Object):
     """
     Novelty measures how "novel" a recommendation is in terms of how popular the item was in the train set.
-
     Due to this definition, the novelty of a cold item (i.e. with no interactions in the train set) is not defined,
     in this implementation cold items are ignored and their contribution to the novelty is 0.
-
     A recommender with high novelty will be able to recommend also long queue (i.e. unpopular) items.
-
     Mean self-information  (Zhou 2010)
     """
 
@@ -801,12 +787,9 @@ class Ratio_AveragePopularity(_Metrics_Object):
 class Diversity_similarity(_Metrics_Object):
     """
     Intra list diversity computes the diversity of items appearing in the recommendations received by each single user, by using an item_diversity_matrix.
-
     It can be used, for example, to compute the diversity in terms of features for a collaborative recommender.
-
     A content-based recommender will have low IntraList diversity if that is computed on the same features the recommender uses.
     A TopPopular recommender may exhibit high IntraList diversity.
-
     """
 
     def __init__(self, item_diversity_matrix):
@@ -860,24 +843,16 @@ class Diversity_similarity(_Metrics_Object):
 class Diversity_MeanInterList(_Metrics_Object):
     """
     MeanInterList diversity measures the uniqueness of different users' recommendation lists.
-
     It can be used to measure how "diversified" are the recommendations different users receive.
-
     While the original proposal called this metric "Personalization", we do not use this name since the highest MeanInterList diversity
     is exhibited by a non personalized Random recommender.
-
     It can be demonstrated that this metric does not require to compute the common items all possible couples of users have in common
     but rather it is only sensitive to the total amount of time each item has been recommended.
     Please refer to my PhD. Thesis Appendix B for references "An assessment of reproducibility and methodological issues in neural recommender systems research"
-
     MeanInterList diversity is a function of the square of the probability an item has been recommended to any user, hence
     MeanInterList diversity is equivalent to the Herfindahl index as they measure the same quantity.
-
     A TopPopular recommender that does not remove seen items will have 0.0 MeanInterList diversity.
-
-
     pag. 3, http://www.pnas.org/content/pnas/107/10/4511.full.pdf
-
     @article{zhou2010solving,
       title={Solving the apparent diversity-accuracy dilemma of recommender systems},
       author={Zhou, Tao and Kuscsik, Zolt{\'a}n and Liu, Jian-Guo and Medo, Mat{\'u}{\v{s}} and Wakeling, Joseph Rushton and Zhang, Yi-Cheng},
@@ -888,24 +863,20 @@ class Diversity_MeanInterList(_Metrics_Object):
       year={2010},
       publisher={National Acad Sciences}
     }
-
     # The formula is diversity_cumulative += 1 - common_recommendations(user1, user2)/cutoff
     # for each couple of users, except the diagonal. It is VERY computationally expensive
     # We can move the 1 and cutoff outside of the summation. Remember to exclude the diagonal
     # co_counts = URM_predicted.dot(URM_predicted.T)
     # co_counts[np.arange(0, n_user, dtype=np.int):np.arange(0, n_user, dtype=np.int)] = 0
     # diversity = (n_user**2 - n_user) - co_counts.sum()/self.cutoff
-
     # If we represent the summation of co_counts separating it for each item, we will have:
     # co_counts.sum() = co_counts_item1.sum()  + co_counts_item2.sum() ...
     # If we know how many times an item has been recommended, co_counts_item1.sum() can be computed as how many couples of
     # users have item1 in common. If item1 has been recommended n times, the number of couples is n*(n-1)
     # Therefore we can compute co_counts.sum() value as:
     # np.sum(np.multiply(item-occurrence, item-occurrence-1))
-
     # The naive implementation URM_predicted.dot(URM_predicted.T) might require an hour of computation
     # The last implementation has a negligible computational time even for very big datasets
-
     """
 
     def __init__(self, n_items, cutoff):
