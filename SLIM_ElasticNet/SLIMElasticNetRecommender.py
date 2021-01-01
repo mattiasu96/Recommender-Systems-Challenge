@@ -154,7 +154,7 @@ class MultiThreadSLIM_ElasticNet(SLIMElasticNetRecommender, BaseItemSimilarityMa
         super(MultiThreadSLIM_ElasticNet, self).__init__(URM_train, verbose=verbose)
 
     def _partial_fit(self, currentItem, X, topK):
-        model = ElasticNet(alpha=1.0,
+        model = ElasticNet(alpha=self.alpha,
                            l1_ratio=self.l1_ratio,
                            positive=self.positive_only,
                            fit_intercept=False,
@@ -190,7 +190,7 @@ class MultiThreadSLIM_ElasticNet(SLIMElasticNetRecommender, BaseItemSimilarityMa
 
         return values, rows, cols
 
-    def fit(self, l1_ratio=0.1,
+    def fit(self, l1_ratio=0.1, alpha=1,
             positive_only=True,
             topK=100,
             workers=multiprocessing.cpu_count()):
@@ -200,10 +200,10 @@ class MultiThreadSLIM_ElasticNet(SLIMElasticNetRecommender, BaseItemSimilarityMa
         self.l1_ratio = l1_ratio
         self.positive_only = positive_only
         self.topK = topK
-
+        self.alpha=alpha
         self.workers = workers
 
-        self.URM_train = check_matrix(self.URM_train, 'csc', dtype=np.float32)
+        self.URM_train = check_matrix(self.URM_train, 'csr', dtype=np.float32)
         n_items = self.URM_train.shape[1]
         # fit item's factors in parallel
 

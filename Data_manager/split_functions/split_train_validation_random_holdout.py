@@ -88,7 +88,7 @@ def split_train_in_two_percentage_user_wise(URM_train, train_percentage = 0.1, v
 
 
 
-def split_train_in_two_percentage_global_sample(URM_all, train_percentage = 0.1):
+def split_train_in_two_percentage_global_sample(URM_all, train_percentage = 0.1, seed=None):
     """
     The function splits an URM in two matrices selecting the number of interactions globally
     :param URM_all:
@@ -101,7 +101,7 @@ def split_train_in_two_percentage_global_sample(URM_all, train_percentage = 0.1)
 
 
     from Data_manager.IncrementalSparseMatrix import IncrementalSparseMatrix
-
+    np.random.seed(seed)
     num_users, num_items = URM_all.shape
 
     URM_train_builder = IncrementalSparseMatrix(n_rows=num_users, n_cols=num_items, auto_create_col_mapper=False, auto_create_row_mapper=False)
