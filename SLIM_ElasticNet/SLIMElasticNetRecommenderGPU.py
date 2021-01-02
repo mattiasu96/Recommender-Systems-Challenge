@@ -45,15 +45,7 @@ class SLIMElasticNetRecommenderGPU(BaseItemSimilarityMatrixRecommender):
         #warnings.simplefilter("once", category=ConvergenceWarning)
 
         # initialize the ElasticNet model
-        self.model = ElasticNetH2O(alpha=alpha,
-                                l1_ratio=self.l1_ratio,
-                                positive=self.positive_only,
-                                fit_intercept=False,
-                                copy_X=False,
-                                precompute=True,
-                                selection='random',
-                                max_iter=100,
-                                tol=1e-4)
+        self.model = ElasticNetH2O()
 
         URM_train = check_matrix(self.URM_train, 'csc', dtype=np.float32)
 
