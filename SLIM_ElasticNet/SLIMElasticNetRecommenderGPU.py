@@ -31,7 +31,7 @@ class SLIMElasticNetRecommenderGPU(BaseItemSimilarityMatrixRecommender):
     RECOMMENDER_NAME = "SLIMElasticNetRecommender"
 
     def __init__(self, URM_train, verbose=True):
-        super(SLIMElasticNetRecommender, self).__init__(URM_train, verbose=verbose)
+        super(SLIMElasticNetRecommenderGPU, self).__init__(URM_train, verbose=verbose)
 
     def fit(self, l1_ratio=0.1, alpha=1.0, positive_only=True, topK=100):
 
