@@ -1,6 +1,6 @@
 # Recommender Systems 2020 Challenge
 
-This repo contains the code and the data used in the **Recommender Systems 2020 Challenge** @ Politecnico di Milano. <br> Our tested models + challenge code can be found inside the [Challenge_2020](/Challenge_2020) folder. <br> All the remaining folders are library codebase forked by the [course repository](https://github.com/MaurizioFD/RecSys_Course_AT_PoliMi), which contains basic implementations of many recommenders + utility code.
+This repo contains the code and the data used in the [Recommender Systems 2020 Challenge](https://www.kaggle.com/c/recommender-system-2020-challenge-polimi/leaderboard) @ Politecnico di Milano. <br> Our tested models + challenge code can be found inside the [Challenge_2020](/Challenge_2020) folder. <br> All the remaining folders are library codebase forked by the [course repository](https://github.com/MaurizioFD/RecSys_Course_AT_PoliMi), which contains basic implementations of many recommenders + utility code.
 
 We ended up with the following placement:
 
@@ -29,4 +29,4 @@ The best models can be found in [Best Models](/Challenge_2020/Best_models), in p
 # FAQ
 This section aims at helping future students with possible FAQ and problems we faced during the competition.
 
-1. **I don't know where to start, how I choose my recommender/model?**
+1. **I don't know where to start, how I do choose my recommender/model?**
