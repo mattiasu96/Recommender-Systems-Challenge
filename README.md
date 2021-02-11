@@ -26,6 +26,10 @@ Each one of the above mentioned algorithms has been trained using the **Feature 
 
 The best models can be found in [Best Models](/Challenge_2020/Best_models), in particular the code of the above mentioned model is [MF_IALS+rp3+Slim_elasticNet_featuremerge_0.09917](/Challenge_2020/Best_models/MF_IALS+rp3+Slim_elasticNet_featuremerge_0.09917_test.ipynb). The other models in this folder, even if they have a higher test score, were achieving worse performances on the private leaderboard. 
 
+## Our final presentation
+
+[RecSys Presentation](https://github.com/mattiasu96/Recommender-Systems-Challenge/blob/main/RecSys%20Presentation.pdf) 
+
 # FAQ
 This section aims at helping future students with possible FAQ and problems we faced during the competition.
 
