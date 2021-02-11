@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="img/first_page.png" alt="RecSys" title="RecSys Presentation" />
+	<img src="img/first_page.png" alt="RecSys" title="RecSys Presentation." />
 </p>
 
 
