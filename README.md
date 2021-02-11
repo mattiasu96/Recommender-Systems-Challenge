@@ -1,3 +1,8 @@
+<p align="center">
+	<img src="img/first_page.png" alt="RecSys" title="RecSys Presentation" />
+</p>
+
+
 # Recommender Systems 2020 Challenge
 
 This repo contains the code and the data used in the [Recommender Systems 2020 Challenge](https://www.kaggle.com/c/recommender-system-2020-challenge-polimi/leaderboard) @ Politecnico di Milano. <br> Our tested models + challenge code can be found inside the [Challenge_2020](/Challenge_2020) folder. <br> All the remaining folders are library codebase forked from the [course repository](https://github.com/MaurizioFD/RecSys_Course_AT_PoliMi), which contains basic implementations of many recommenders and utility code.
