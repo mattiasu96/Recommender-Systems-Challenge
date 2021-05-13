@@ -1,7 +1,7 @@
 """
-Created on 23/03/2019
+Created on 23/12/2020
 
-@author: Maurizio Ferrari Dacrema
+@author: Maurizio Ferrari Dacrema, Mattia Surricchio, Arcangelo Pisa
 """
 
 
